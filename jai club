@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo Club</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#141433;
+color:white;
+padding-bottom:90px;
+}
+
+.header{
+background:linear-gradient(90deg,#ff8c72,#b85cff,#58b6ff);
+padding:20px;
+border-radius:0 0 30px 30px;
+}
+
+.logo{
+font-size:32px;
+font-weight:bold;
+text-align:center;
+}
+
+.wallet{
+margin-top:20px;
+background:#25255a;
+padding:20px;
+border-radius:20px;
+}
+
+.balance{
+font-size:36px;
+font-weight:bold;
+margin-top:10px;
+}
+
+.actions{
+display:flex;
+justify-content:space-between;
+margin-top:20px;
+}
+
+.action{
+text-align:center;
+flex:1;
+}
+
+.banner{
+margin:20px;
+background:linear-gradient(135deg,#25186e,#6a2eff);
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+.banner h2{
+font-size:30px;
+}
+
+.play-btn{
+margin-top:15px;
+padding:12px 30px;
+border:none;
+border-radius:30px;
+background:linear-gradient(90deg,#ff8a65,#b855f7,#60a5fa);
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+.section{
+padding:20px;
+}
+
+.section-title{
+font-size:24px;
+margin-bottom:15px;
+}
+
+.games{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
+
+.card{
+background:#242457;
+border-radius:20px;
+padding:20px;
+text-align:center;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#292960;
+display:flex;
+justify-content:space-around;
+padding:15px 0;
+border-top:1px solid rgba(255,255,255,.1);
+}
+
+.nav-item{
+text-align:center;
+font-size:14px;
+}
+
+.demo-tag{
+background:#5f36ff;
+padding:5px 10px;
+border-radius:20px;
+font-size:12px;
+display:inline-block;
+margin-top:10px;
+}
+
+.timer{
+font-size:22px;
+margin-top:10px;
+}
+
+@media(max-width:600px){
+.games{
+grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+<div class="logo">DEMO CLUB</div>
+
+<div class="wallet">
+<div>Virtual Balance</div>
+<div class="balance" id="balance">1000 Coins</div>
+
+<div class="actions">
+<div class="action">Wallet</div>
+<div class="action">Rewards</div>
+<div class="action">Profile</div>
+</div>
+</div>
+</div>
+
+<div class="banner">
+<h2>Color Game Demo</h2>
+<p>Virtual Coins Only</p>
+
+<div class="timer">
+Round Starts In:
+<span id="timer">30</span>s
+</div>
+
+<div class="demo-tag">NO REAL MONEY</div>
+
+<br>
+
+<button class="play-btn" onclick="openGame()">
+Play Demo
+</button>
+</div>
+
+<div class="section">
+
+<div class="section-title">
+Popular Games
+</div>
+
+<div class="games">
+
+<div class="card">
+<h3>Color Prediction</h3>
+<p>Virtual Coin Mode</p>
+</div>
+
+<div class="card">
+<h3>Lucky Number</h3>
+<p>Random Demo</p>
+</div>
+
+<div class="card">
+<h3>Spin Wheel</h3>
+<p>Coming Soon</p>
+</div>
+
+<div class="card">
+<h3>Dice Game</h3>
+<p>Coming Soon</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="bottom-nav">
+<div class="nav-item">🏠<br>Home</div>
+<div class="nav-item">🎮<br>Games</div>
+<div class="nav-item">🎁<br>Rewards</div>
+<div class="nav-item">👤<br>Account</div>
+</div>
+
+<script>
+
+let time = 30;
+
+setInterval(()=>{
+
+document.getElementById("timer").innerText=time;
+
+if(time===0){
+time=30;
+}else{
+time--;
+}
+
+},1000);
+
+function openGame(){
+
+let choice = prompt(
+"Choose Color:\nRED\nGREEN\nVIOLET"
+);
+
+if(!choice) return;
+
+choice = choice.toUpperCase();
+
+let colors=["RED","GREEN","VIOLET"];
+
+let result =
+colors[Math.floor(Math.random()*3)];
+
+if(choice===result){
+
+alert(
+"Result: "+result+
+"\nYou Win 100 Coins!"
+);
+
+}else{
+
+alert(
+"Result: "+result+
+"\nYou Lose!"
+);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
